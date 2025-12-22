@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #020111, #191970);
+    height: 100vh;
+    overflow: hidden;
+    color: rgb(0, 255, 242);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+/* SNOW */
+.snow {
+    position: absolute;
+    top: -20px;
+    color: white;
+    animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+    to {
+        transform: translateY(100vh);
+    }
+}
