@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>BCA AJAX</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>BCA Description</h2>
+
+<button id="load">Load Content</button>
+
+<div id="result"></div>
+
+<script>
+
+$("#load").click(function() {
+
+    $.ajax({
+        url: "bca.txt",
+        success: function(data) {
+            $("#result").html(data);
+        },
+        error: function() {
+            $("#result").html("Error loading file.");
+        }
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>BCA Information</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>BCA Information</h2>
+
+<button id="load">Load BCA Information</button>
+
+<div id="content"></div>
+
+<script>
+
+$("#load").click(function() {
+
+    $.ajax({
+        url: "bca.txt",
+        type: "GET",
+
+        success: function(data) {
+            $("#content").html("<p>" + data + "</p>");
+        },
+
+        error: function() {
+            $("#content").html("Unable to load file.");
+        }
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Username Availability</title>
+
+<script>
+
+function checkUsername() {
+
+    let username = document.getElementById("username").value;
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open(
+        "GET",
+        "check.php?username=" + encodeURIComponent(username),
+        true
+    );
+
+    xhr.onreadystatechange = function() {
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            document.getElementById("result").innerHTML =
+                xhr.responseText;
+
+        }
+
+    };
+
+    xhr.send();
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>Check Username</h2>
+
+<input
+    type="text"
+    id="username"
+    onkeyup="checkUsername()"
+    placeholder="Enter username"
+>
+
+<p id="result"></p>
+
+</body>
+
+</html>

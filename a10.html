@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AJAX Login</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>Login</h2>
+
+<div id="loginBox">
+
+    <input type="text" id="userid" placeholder="User ID">
+    <br><br>
+
+    <input type="password" id="password" placeholder="Password">
+    <br><br>
+
+    <button id="login">Login</button>
+
+</div>
+
+<div id="message"></div>
+
+<script>
+
+$("#login").click(function() {
+
+    let userid = $("#userid").val();
+    let password = $("#password").val();
+
+    $.ajax({
+        url: "login.php",
+        type: "POST",
+        data: {
+            userid: userid,
+            password: password
+        },
+
+        success: function(response) {
+
+            if (response.trim() === "success") {
+
+                $("#loginBox").hide();
+
+                $("#message").html(
+                    "<h3>Welcome " + userid + "!</h3>"
+                );
+
+            } else {
+
+                $("#message").html(
+                    "<p style='color:red'>Invalid username or password. Try again.</p>"
+                );
+
+            }
+
+        }
+    });
+
+});
+
+</script>
+
+</body>
+</html>

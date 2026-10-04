@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Country City AJAX</title>
+
+<script>
+
+function loadCities() {
+
+    let country =
+        document.getElementById("country").value;
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open(
+        "GET",
+        "cities.php?country=" +
+        encodeURIComponent(country),
+        true
+    );
+
+    xhr.onreadystatechange = function() {
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            document.getElementById("city").innerHTML =
+                xhr.responseText;
+
+        }
+
+    };
+
+    xhr.send();
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>Country and City</h2>
+
+<select id="country" onchange="loadCities()">
+
+    <option value="">Select Country</option>
+    <option value="Nepal">Nepal</option>
+    <option value="India">India</option>
+
+</select>
+
+<br><br>
+
+<select id="city">
+
+    <option>Select City</option>
+
+</select>
+
+</body>
+
+</html>
